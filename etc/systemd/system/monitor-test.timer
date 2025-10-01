@@ -1,0 +1,11 @@
+[Unit]
+Description=Run monitor-test.service every 1 minute
+
+[Timer]
+# Запуск каждые 60 секунд после последнего запуска
+OnUnitActiveSec=60
+AccuracySec=1s
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,19 @@
+[Unit]
+Description=Monitor 'test' process (one-shot)
+After=network.target
+
+[Service]
+Type=oneshot
+# Запускаем скрипт от пользователя monitoring (пользователь должен быть создан)
+User=monitoring
+Group=monitoring
+ExecStart=/usr/local/bin/monitor_test.sh
+# Ограничения для безопасности
+ProtectSystem=full
+ProtectHome=true
+NoNewPrivileges=true
+PrivateTmp=true
+# Logs will be written to /var/log/monitoring.log so нет необходимости в журналировании systemd
+
+[Install]
+WantedBy=multi-user.target
